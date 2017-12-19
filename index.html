@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scroll</title>
+    <style>
+        .index_switch{
+            margin: 10px;
+            font-size: 15px;
+            overflow: auto;
+            transition:all 0.3s linear;
+        }
+        .inner_switch{
+            width: 425px;
+            position: relative;
+        }
+        .inner_switch li:first-child{
+            border-left:none;
+        }
+        .inner_switch li{
+            text-align: center;
+            float: left;
+            padding:0 10px;
+            border-left: 1px solid #eee;
+        }
+        .index_active{
+            border-bottom: 2px solid #38aef3;
+        }
+        ul{
+            list-style: none;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="index_switch">
+    <ul class="inner_switch clearfix">
+        <li class="index_active"><span>推荐</span></li>
+        <li><span>生活</span></li>
+        <li><span>健康咨询</span></li>
+        <li><span>专家讲堂</span></li>
+        <li><span>健康活动</span></li>
+        <li><span>科研教学</span></li>
+    </ul>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+<script>
+    $(".inner_switch>li").click(function(){
+        $(this).addClass('index_active').siblings().removeClass();
+        if($(this).index()=="1"){
+            $(".index_switch").animate({
+                scrollLeft:40
+            },400)
+        }else if($(this).index()=="2"||$(this).index()=="3"||$(this).index()=="4"){
+            $(".index_switch").animate({
+                scrollLeft:100
+            },400)
+        }
+    })
+</script>
+</html>
